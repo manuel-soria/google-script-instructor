@@ -1,12 +1,13 @@
-from langchain.callbacks.base import BaseCallbackHandler
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, AIMessage
 import streamlit as st
 from langsmith import Client
+
+from utils import StreamHandler
 client = Client()
 
 st.set_page_config(page_title="Apps Script Assistant", page_icon="")
-st.title("🦜 LangChain: Getting Started Class")
+st.title("🥷 Mastering Google Apps Scripts")
 button_css =""".stButton>button {
     color: #4F8BF9;
     border-radius: 50%;
