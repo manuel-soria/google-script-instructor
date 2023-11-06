@@ -8,6 +8,16 @@ from langchain.schema import SystemMessage
 from langchain.memory import ConversationBufferMemory
 
 from utils import StreamHandler
+import os
+
+# Set LangSmith environment variables
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_ENDPOINT"] = st.secrets["LANGCHAIN_ENDPOINT"]
+os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
+os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
+
+
 client = Client()
 
 st.set_page_config(page_title="Apps Script Assistant", page_icon="Austral Logo.png")
