@@ -33,7 +33,7 @@ def send_feedback(run_id, score):
     client.create_feedback(run_id, "user_score", score=score)
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [AIMessage(content="Welcome! This short course with help you started with LangChain, and will cover LLMs, prompts, output parsers, and LLMChains.Before doing this, you should have a Python environment set up. Do you have that done?")]
+    st.session_state["messages"] = [AIMessage(content="Welcome! I can help you with anything you need regarding Google Apps Script 🥷")]
 
 for msg in st.session_state["messages"]:
     if isinstance(msg, HumanMessage):
