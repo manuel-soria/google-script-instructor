@@ -1,3 +1,5 @@
 langchain
 langsmith
+openai
+pydantic
 streamlit
