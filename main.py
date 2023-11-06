@@ -21,7 +21,7 @@ os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
 client = Client()
 
 st.set_page_config(page_title="Apps Script Assistant", page_icon="Austral Logo.png")
-st.title("🥷 Mastering Google Apps Scripts")
+st.title("Mastering Google Apps Scripts")
 button_css =""".stButton>button {
     color: #4F8BF9;
     border-radius: 50%;
@@ -47,12 +47,12 @@ if "messages" not in st.session_state:
 
 for msg in st.session_state["messages"]:
     if isinstance(msg, HumanMessage):
-        st.chat_message("user").write(msg.content)
+        st.chat_message("user", avatar="🥷").write(msg.content)
     else:
         st.chat_message("assistant", avatar="Austral Logo.png").write(msg.content)
 
 if prompt := st.chat_input():
-    st.chat_message("user").write(prompt)
+    st.chat_message("user", avatar="🥷").write(prompt)
 
     with st.chat_message("assistant", avatar="Austral Logo.png"):
         stream_handler = StreamHandler(st.empty())
