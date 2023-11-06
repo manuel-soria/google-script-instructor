@@ -10,6 +10,8 @@ from langchain.memory import ConversationBufferMemory
 from utils import StreamHandler
 import os
 
+st.set_page_config(page_title="Apps Script Assistant", page_icon="Austral Logo.png")
+
 # Set LangSmith environment variables
 try:
     os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
@@ -21,8 +23,6 @@ except:
     print("Running locally")
 
 client = Client()
-
-st.set_page_config(page_title="Apps Script Assistant", page_icon="Austral Logo.png")
 # st.title("Mastering Google Apps Scripts")
 button_css =""".stButton>button {
     color: #4F8BF9;
