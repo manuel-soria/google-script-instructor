@@ -2,16 +2,14 @@
 var API_key = ""
 
 function GPT(prompt) {
-  var Model_ID = "gpt-3.5-turbo";
-  var maxTokens = 64;
-  var temperature = 0.5;
+  var Model_ID = "gpt-4";
+  var temperature = 0;
   // Build the API payload
   var payload = {
     'model': Model_ID, // Use "gpt-3.5-turbo" for chat model
     'messages': [{'role': 'system', 'content': 'You are a helpful assistant.'},
                  {'role': 'user', 'content': prompt}], // Use messages for chat model
     'temperature': temperature,
-    'max_tokens': maxTokens,
   };
   var options = {
     "method": "post",
