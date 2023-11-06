@@ -10,7 +10,7 @@ from langchain.memory import ConversationBufferMemory
 from utils import StreamHandler
 client = Client()
 
-st.set_page_config(page_title="Apps Script Assistant", page_icon="")
+st.set_page_config(page_title="Apps Script Assistant", page_icon="Austral Logo.png")
 st.title("🥷 Mastering Google Apps Scripts")
 button_css =""".stButton>button {
     color: #4F8BF9;
@@ -39,12 +39,12 @@ for msg in st.session_state["messages"]:
     if isinstance(msg, HumanMessage):
         st.chat_message("user").write(msg.content)
     else:
-        st.chat_message("assistant").write(msg.content)
+        st.chat_message("assistant", avatar="Austral Logo.png").write(msg.content)
 
 if prompt := st.chat_input():
     st.chat_message("user").write(prompt)
 
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar="Austral Logo.png"):
         stream_handler = StreamHandler(st.empty())
         model = ChatOpenAI(streaming=True, callbacks=[stream_handler], model="gpt-4")
         chain = LLMChain(prompt=prompt_template, llm=model)
