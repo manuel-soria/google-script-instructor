@@ -23,7 +23,7 @@ except:
 client = Client()
 
 st.set_page_config(page_title="Apps Script Assistant", page_icon="Austral Logo.png")
-st.title("Mastering Google Apps Scripts")
+# st.title("Mastering Google Apps Scripts")
 button_css =""".stButton>button {
     color: #4F8BF9;
     border-radius: 50%;
