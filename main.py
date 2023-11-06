@@ -44,8 +44,14 @@ from langchain.chains import LLMChain
 def send_feedback(run_id, score):
     client.create_feedback(run_id, "user_score", score=score)
 
+first_message = """Welcome! I am an AI teaching assistant specialized in Google Apps Script.
+I can help you understand the basics, guide you through complex tasks, or assist you in debugging your scripts.
+Feel free to ask anything from simple commands, to how to automate tasks in Google Sheets, or even how to interact with other Google Services.
+Let's start coding!
+"""
+
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [AIMessage(content="Welcome! I can help you with anything you need regarding Google Apps Script")]
+    st.session_state["messages"] = [AIMessage(content=first_message)]
 
 for msg in st.session_state["messages"]:
     if isinstance(msg, HumanMessage):
