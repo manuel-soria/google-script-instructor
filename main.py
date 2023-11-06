@@ -11,12 +11,14 @@ from utils import StreamHandler
 import os
 
 # Set LangSmith environment variables
-os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_ENDPOINT"] = st.secrets["LANGCHAIN_ENDPOINT"]
-os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
-os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
-
+try:
+    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+    os.environ["LANGCHAIN_TRACING_V2"] = "true"
+    os.environ["LANGCHAIN_ENDPOINT"] = st.secrets["LANGCHAIN_ENDPOINT"]
+    os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
+    os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
+except:
+    print("Running locally")
 
 client = Client()
 
@@ -43,16 +45,16 @@ def send_feedback(run_id, score):
     client.create_feedback(run_id, "user_score", score=score)
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [AIMessage(content="Welcome! I can help you with anything you need regarding Google Apps Script 🥷")]
+    st.session_state["messages"] = [AIMessage(content="Welcome! I can help you with anything you need regarding Google Apps Script")]
 
 for msg in st.session_state["messages"]:
     if isinstance(msg, HumanMessage):
-        st.chat_message("user", avatar="🥷").write(msg.content)
+        st.chat_message("user", avatar="ninja.png").write(msg.content)
     else:
         st.chat_message("assistant", avatar="Austral Logo.png").write(msg.content)
 
 if prompt := st.chat_input():
-    st.chat_message("user", avatar="🥷").write(prompt)
+    st.chat_message("user", avatar="ninja.png").write(prompt)
 
     with st.chat_message("assistant", avatar="Austral Logo.png"):
         stream_handler = StreamHandler(st.empty())
